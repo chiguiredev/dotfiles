@@ -1,0 +1,19 @@
+colorscheme darkness
+
+set noerrorbells
+
+" just show the tabs
+set gui=none,tabs
+
+" don't focus any "input" elements automatically when open pages.
+set focuscontent
+
+" Highlight search results.
+set hlsearch
+set incsearch
+
+" Mappings:
+noremap h gT
+noremap l gt
+nnoremap j 7j
+nnoremap k 7k
