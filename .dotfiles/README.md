@@ -1,9 +1,10 @@
-# my-dotfiles
+# Dotfiles
 
 ## Setup
 ```bash
 git init --bare $HOME/.dotfiles
-mydotfiles remote add origin git@github.com:Rafaelsalass/dotfiles.git
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles remote add origin git@github.com:Rafaelsalass/dotfiles.git
 ```
 
 ## Configuration
@@ -21,4 +22,8 @@ dotfiles push
 ```
 
 ## Replication
-### to do
+```bash
+echo ".dotfiles" >> .gititnore
+git clone --bare https://github.com/Rafaelsalass/dotfiles $HOME/.dotfiles
+dotfiles checkout
+```
