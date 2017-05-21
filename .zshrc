@@ -84,5 +84,5 @@ source $ZSH/oh-my-zsh.sh
  alias vconfig="vim ~/.vimrc"
  alias ohmyzsh="vim ~/.oh-my-zsh"
  alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
- alias sudo="fuck"
+ alias fuck="sudo"
  alias cim="vim"
