@@ -95,4 +95,4 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias fuck="sudo"
 alias cim="vim"
 alias vi="vim"
-alias ass="exit"
+alias q="exit"
