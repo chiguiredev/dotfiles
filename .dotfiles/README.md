@@ -21,7 +21,7 @@ dotfiles commit -m 'Add vimrc'
 dotfiles push
 ```
 
-## Replication
+## Setting it up in a new machine
 ```bash
 echo ".dotfiles" >> .gititnore
 git clone --bare https://github.com/Rafaelsalass/dotfiles $HOME/.dotfiles

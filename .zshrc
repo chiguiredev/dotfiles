@@ -86,3 +86,4 @@ source $ZSH/oh-my-zsh.sh
  alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
  alias fuck="sudo"
  alias cim="vim"
+ alias vi="vim"
