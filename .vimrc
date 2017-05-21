@@ -13,8 +13,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'yggdroot/indentline'
-Plug 'raimondi/delimitmate' 
-Plug 'tpope/vim-repeat' 
+Plug 'raimondi/delimitmate'
+Plug 'tpope/vim-repeat'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -76,9 +76,9 @@ nnoremap <C-f> :NERDTreeToggle<CR>
 "closing a tab or tab
 nnoremap <C-d> :close<CR>
 
-nnoremap <down> <Nop> 
-nnoremap <left> gT 
-nnoremap <right> gt 
+nnoremap <down> <Nop>
+nnoremap <left> gT
+nnoremap <right> gt
 nnoremap <up> <Nop>
 
 inoremap <down> <Nop>
@@ -151,7 +151,7 @@ set shiftwidth=2
 set tabstop=2
 
 "not so usual config
-set updatetime=250 
+set updatetime=250
 "identation
 set ai "aunto ident
 set si "smart ident
@@ -187,6 +187,7 @@ let g:ctrlp_map = '<leader>f'
 "custom commands
 command! Vconfig :find ~/.vimrc
 command! Zconfig :find ~/.zshrc
+command! Tconfig :find ~/.tmux.conf
 
 " Experimental stuff
 " CtrlP auto cache clearing.

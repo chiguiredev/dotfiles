@@ -1,8 +1,15 @@
+# want your terminal to support 256 color schemes? I do ...
+export TERM="xterm-256color"
+
+# allows you to type Bash style comments on your command line
+# good 'ol Bash
+setopt interactivecomments
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/rafael/.oh-my-zsh
+export ZSH=/home/rafael/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -51,7 +58,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git wd extract)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -63,11 +70,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-   export EDITOR='vim'
- fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -80,10 +87,12 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 # Example aliases
- alias zconfig="vim ~/.zshrc"
- alias vconfig="vim ~/.vimrc"
- alias ohmyzsh="vim ~/.oh-my-zsh"
- alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
- alias fuck="sudo"
- alias cim="vim"
- alias vi="vim"
+alias zconfig="vim ~/.zshrc"
+alias vconfig="vim ~/.vimrc"
+alias tconfig="vim ~/.tmux.conf"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias fuck="sudo"
+alias cim="vim"
+alias vi="vim"
+alias ass="exit"
