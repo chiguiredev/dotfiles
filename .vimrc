@@ -56,6 +56,8 @@ nnoremap <leader>e :e#<CR>
 nnoremap <leader>b :ls<CR>:b<Space>
 nnoremap <leader>r :reg<CR>
 nnoremap <leader>rtw :%s/\s\+$//e<CR>
+nnoremap <leader>y "+yy
+nnoremap <leader>p "+p
 
 "make j and k jump rows not lines
 nnoremap j gj
@@ -122,9 +124,9 @@ inoremap <C-o> <C-x><C-o>
 set backspace=eol,start,indent
 set ttimeoutlen=5
 set noshowmode
-set colorcolumn=80
 set ignorecase
 set laststatus=2
+set diffopt+=vertical
 set title
 set lazyredraw
 set hidden

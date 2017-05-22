@@ -91,6 +91,7 @@ alias zconfig="vim ~/.zshrc"
 alias vconfig="vim ~/.vimrc"
 alias tconfig="vim ~/.tmux.conf"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+# this one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias fuck="sudo"
 alias cim="vim"
