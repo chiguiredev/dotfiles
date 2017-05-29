@@ -63,6 +63,10 @@ nnoremap <leader>p "+p
 nnoremap j gj
 nnoremap k gk
 
+"no more ex mode please
+nnoremap Q <Nop>
+map q: <Nop>
+
 "paragraph jumping
 nnoremap <S-j> }
 nnoremap <S-k> {
