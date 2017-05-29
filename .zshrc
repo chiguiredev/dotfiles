@@ -97,3 +97,8 @@ alias fuck="sudo"
 alias cim="vim"
 alias vi="vim"
 alias q="exit"
+alias c="clear"
+alias suvim="sudo -E vim"
+
+# Configuration for nvm
+source /usr/share/nvm/init-nvm.sh
