@@ -98,6 +98,8 @@ alias cim="vim"
 alias vi="vim"
 alias q="exit"
 alias c="clear"
+alias t="tmux"
+alias md="mkdir"
 alias suvim="sudo -E vim"
 
 # Configuration for nvm
