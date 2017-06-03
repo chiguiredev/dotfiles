@@ -157,7 +157,7 @@ set shiftwidth=2
 set tabstop=2
 
 "not so usual config
-set updatetime=250
+set updatetime=300
 "identation
 set ai "aunto ident
 set si "smart ident
@@ -184,7 +184,7 @@ let NERDTreeAutoDeleteBuffer = 1
 "this from vim-jsx
 "enable jsx syntax highlighing in javascript files
 let g:jsx_ext_required = 0
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*jsx"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx"
 "This will make the list of non closing tags case sensitive
 let g:closetag_emptyTags_caseSensitive = 1
 let g:airline_powerline_fonts = 1

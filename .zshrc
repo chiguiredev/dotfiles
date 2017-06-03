@@ -91,8 +91,6 @@ alias zconfig="vim ~/.zshrc"
 alias vconfig="vim ~/.vimrc"
 alias tconfig="vim ~/.tmux.conf"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-# this one is to manage the dotfiles repo
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias fuck="sudo"
 alias cim="vim"
 alias vi="vim"
@@ -101,6 +99,11 @@ alias c="clear"
 alias t="tmux"
 alias md="mkdir"
 alias suvim="sudo -E vim"
+alias tp="trash-put"
+alias srcme="source ~/.zshrc"
+
+# this one is to manage the dotfiles repo
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Configuration for nvm
 source /usr/share/nvm/init-nvm.sh
