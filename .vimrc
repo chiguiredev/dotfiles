@@ -58,6 +58,8 @@ nnoremap <leader>r :reg<CR>
 nnoremap <leader>rtw :%s/\s\+$//e<CR>
 nnoremap <leader>y "+yy
 nnoremap <leader>p "+p
+nnoremap <leader><left> :vertical resize +10<CR>
+nnoremap <leader><right> :vertical resize -10<CR>
 
 "make j and k jump rows not lines
 nnoremap j gj
@@ -128,7 +130,6 @@ inoremap <C-o> <C-x><C-o>
 set backspace=eol,start,indent
 set ttimeoutlen=5
 set noshowmode
-set ignorecase
 set laststatus=2
 set diffopt+=vertical
 set title
@@ -136,7 +137,9 @@ set lazyredraw
 set hidden
 set nobackup
 set noswapfile
+set ignorecase
 set smartcase
+set infercase "completions are now case aware
 colorscheme onedark
 set clipboard=unnamedplus
 filetype plugin on
@@ -149,6 +152,10 @@ syntax enable
 set splitbelow
 set splitright
 set scrolloff=999
+
+"better wrapping
+set breakindent
+set showbreak=\\\\\
 
 "spaces
 set expandtab

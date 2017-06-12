@@ -5,9 +5,6 @@ set noerrorbells
 " just show the tabs
 set gui=none,tabs
 
-" don't focus any "input" elements automatically when open pages.
-set focuscontent
-
 " Highlight search results.
 set hlsearch
 set incsearch
