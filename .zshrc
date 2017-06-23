@@ -101,6 +101,7 @@ alias md="mkdir"
 alias suvim="sudo -E vim"
 alias tp="trash-put"
 alias srcme="source ~/.zshrc"
+alias rmpacdb="sudo rm /var/lib/pacman/db.lck"
 
 # this one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
