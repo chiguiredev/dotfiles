@@ -49,6 +49,9 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+set undofile
+set undodir=~/.vim/undodir
+
 "mappings
 let mapleader=" "
 nnoremap <leader>h :nohlsearch<CR>
