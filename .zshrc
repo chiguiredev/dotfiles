@@ -58,7 +58,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git wd extract npm z)
+plugins=(git extract npm z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,7 +97,6 @@ alias vi="vim"
 alias q="exit"
 alias c="clear"
 alias t="tmux"
-alias md="mkdir"
 alias tp="trash-put"
 alias suvim="sudo -E vim"
 alias srcme="source ~/.zshrc"
