@@ -12,7 +12,7 @@ Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
-Plug 'yggdroot/indentline'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-repeat'
 Plug 'alvan/vim-closetag'
@@ -20,6 +20,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'tmhedberg/matchit'
+Plug 'stanangeloff/php.vim'
+Plug 'shawncplus/skittles_berry'
 
 "fancy plugins
 "Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -32,9 +34,6 @@ Plug 'tomasr/molokai'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'dracula/vim'
 Plug 'KeitaNakamura/neodark.vim'
-
-"just cool stuff
-Plug 'ryanss/vim-hackernews'
 
 "initialize plugin system
 call plug#end()
@@ -63,6 +62,8 @@ nnoremap <leader>y "+yy
 nnoremap <leader>p "+p
 nnoremap <leader><left> :vertical resize +10<CR>
 nnoremap <leader><right> :vertical resize -10<CR>
+nnoremap <leader>i :IndentGuidesToggle<CR>
+nnoremap p ]p
 
 "make j and k jump rows not lines
 nnoremap j gj
@@ -155,6 +156,7 @@ syntax enable
 set splitbelow
 set splitright
 set scrolloff=999
+set list listchars=trail:-,eol:¬
 
 "better wrapping
 set breakindent
@@ -174,7 +176,6 @@ set si "smart ident
 
 "lines number
 set number
-set relativenumber
 
 "searching
 set incsearch
@@ -194,7 +195,7 @@ let NERDTreeAutoDeleteBuffer = 1
 "this from vim-jsx
 "enable jsx syntax highlighing in javascript files
 let g:jsx_ext_required = 0
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx,*.php"
 "This will make the list of non closing tags case sensitive
 let g:closetag_emptyTags_caseSensitive = 1
 let g:airline_powerline_fonts = 1
