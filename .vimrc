@@ -6,22 +6,22 @@ call plug#begin('~/.vim/plugged')
 
 "for react synrax highlighting
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 
 "productivity plugins
+Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-repeat'
-Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'tmhedberg/matchit'
 Plug 'stanangeloff/php.vim'
 Plug 'shawncplus/skittles_berry'
+Plug 'valloric/MatchTagAlways'
 
 "fancy plugins
 "Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -30,6 +30,7 @@ Plug 'tpope/vim-dispatch'
 
 "color
 Plug 'joshdick/onedark.vim'
+Plug 'trevordmiller/nova-vim'
 Plug 'tomasr/molokai'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'dracula/vim'
@@ -63,6 +64,7 @@ nnoremap <leader>p "+p
 nnoremap <leader><left> :vertical resize +10<CR>
 nnoremap <leader><right> :vertical resize -10<CR>
 nnoremap <leader>i :IndentGuidesToggle<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap p ]p
 
 "make j and k jump rows not lines
@@ -192,14 +194,21 @@ let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
+
 "this from vim-jsx
 "enable jsx syntax highlighing in javascript files
 let g:jsx_ext_required = 0
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx,*.php"
+
 "This will make the list of non closing tags case sensitive
 let g:closetag_emptyTags_caseSensitive = 1
 let g:airline_powerline_fonts = 1
 let g:ctrlp_map = '<leader>f'
+
+"letting matchtagalways to work inside php files and such
+let g:mta_filetypes = { 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1 ,'php' : 1, 'javascript.jsx' : 1}
+
+"change default emmet shortcut
+let g:user_emmet_leader_key='<C-z>'
 
 "custom commands
 command! Vconfig :find ~/.vimrc
