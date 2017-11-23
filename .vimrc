@@ -65,6 +65,7 @@ nnoremap <leader><left> :vertical resize +10<CR>
 nnoremap <leader><right> :vertical resize -10<CR>
 nnoremap <leader>i :IndentGuidesToggle<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>o :only<CR>
 nnoremap p ]p
 
 "make j and k jump rows not lines
@@ -209,6 +210,9 @@ let g:mta_filetypes = { 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1 ,'php' :
 
 "change default emmet shortcut
 let g:user_emmet_leader_key='<C-z>'
+
+"delimit mate
+let delimitMate_matchpairs = "(:),[:],{:}"
 
 "custom commands
 command! Vconfig :find ~/.vimrc
