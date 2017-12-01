@@ -27,6 +27,7 @@ Plug 'valloric/MatchTagAlways'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-dispatch'
+Plug 'jungomi/vim-mdnquery'
 
 "color
 Plug 'joshdick/onedark.vim'
@@ -213,6 +214,7 @@ let g:user_emmet_leader_key='<C-z>'
 
 "delimit mate
 let delimitMate_matchpairs = "(:),[:],{:}"
+let delimitMate_expand_cr = 1
 
 "custom commands
 command! Vconfig :find ~/.vimrc
