@@ -109,6 +109,3 @@ alias xampstart="sudo /opt/lampp/lampp start"
 
 # this one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-# Configuration for nvm
-source /usr/share/nvm/init-nvm.sh
