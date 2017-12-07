@@ -22,6 +22,10 @@ Plug 'tmhedberg/matchit'
 Plug 'stanangeloff/php.vim'
 Plug 'shawncplus/skittles_berry'
 Plug 'valloric/MatchTagAlways'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
+Plug 'w0rp/ale'
+Plug 'tpope/vim-commentary'
 
 "fancy plugins
 "Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -159,7 +163,7 @@ set showcmd
 syntax enable
 set splitbelow
 set splitright
-set scrolloff=999
+set scrolloff=9999
 set list listchars=trail:-,eol:¬
 
 "better wrapping
@@ -180,6 +184,7 @@ set si "smart ident
 
 "lines number
 set number
+set relativenumber
 
 "searching
 set incsearch
@@ -215,6 +220,15 @@ let g:user_emmet_leader_key='<C-z>'
 "delimit mate
 let delimitMate_matchpairs = "(:),[:],{:}"
 let delimitMate_expand_cr = 1
+
+"Ale configuration
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '!'
+let g:ale_sign_warning = '?'
+
+"Don't autosave sessions
+"let g:session_autosave= "no"
 
 "custom commands
 command! Vconfig :find ~/.vimrc
