@@ -26,20 +26,19 @@ Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
+Plug 'Valloric/YouCompleteMe'
 
 "fancy plugins
-"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-dispatch'
 Plug 'jungomi/vim-mdnquery'
+Plug 'zyedidia/vim-snake'
 
 "color
 Plug 'joshdick/onedark.vim'
-Plug 'trevordmiller/nova-vim'
-Plug 'tomasr/molokai'
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'nanotech/jellybeans.vim'
+Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'dracula/vim'
-Plug 'KeitaNakamura/neodark.vim'
 
 "initialize plugin system
 call plug#end()
@@ -72,6 +71,7 @@ nnoremap <leader>i :IndentGuidesToggle<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>o :only<CR>
 nnoremap p ]p
+nnoremap P [p
 
 "make j and k jump rows not lines
 nnoremap j gj
@@ -96,10 +96,10 @@ nnoremap <C-f> :NERDTreeToggle<CR>
 "closing a tab or tab
 nnoremap <C-d> :close<CR>
 
-nnoremap <down> <Nop>
+nnoremap <down> ddp
 nnoremap <left> gT
 nnoremap <right> gt
-nnoremap <up> <Nop>
+nnoremap <up> ddkP
 
 inoremap <down> <Nop>
 inoremap <left> <Nop>
@@ -168,7 +168,7 @@ set list listchars=trail:-,eol:¬
 
 "better wrapping
 set breakindent
-set showbreak=\\\\\
+set showbreak=\\\
 
 "spaces
 set expandtab
@@ -206,8 +206,6 @@ let NERDTreeAutoDeleteBuffer = 1
 "enable jsx syntax highlighing in javascript files
 let g:jsx_ext_required = 0
 
-"This will make the list of non closing tags case sensitive
-let g:closetag_emptyTags_caseSensitive = 1
 let g:airline_powerline_fonts = 1
 let g:ctrlp_map = '<leader>f'
 
@@ -227,13 +225,14 @@ let g:ale_sign_column_always = 1
 let g:ale_sign_error = '!'
 let g:ale_sign_warning = '?'
 
-"Don't autosave sessions
-"let g:session_autosave= "no"
-
 "custom commands
 command! Vconfig :find ~/.vimrc
 command! Zconfig :find ~/.zshrc
 command! Tconfig :find ~/.tmux.conf
+command! Wa :wa
+
+let g:quantum_black=1
+let g:quantum_italics=1
 
 " Experimental stuff
 " CtrlP auto cache clearing.
