@@ -106,6 +106,7 @@ alias srcme="source ~/.zshrc"
 alias rmpacdb="sudo rm /var/lib/pacman/db.lck"
 alias xampphp="/opt/lampp/bin/php"
 alias xampstart="sudo /opt/lampp/lampp start"
+alias rm='echo "This is not the command you are looking for, stupid."; false'
 
 # this one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

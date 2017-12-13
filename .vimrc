@@ -4,10 +4,9 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
-"for react synrax highlighting
-Plug 'pangloss/vim-javascript'
 
 "productivity plugins
+Plug 'pangloss/vim-javascript'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -26,13 +25,15 @@ Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
+Plug 'ap/vim-css-color'
 
 "fancy plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-dispatch'
 Plug 'jungomi/vim-mdnquery'
 Plug 'zyedidia/vim-snake'
+" Plug 'mhinz/vim-startify'
 
 "color
 Plug 'joshdick/onedark.vim'
@@ -40,11 +41,12 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'dracula/vim'
 
+
 "initialize plugin system
 call plug#end()
 
 if (has("termguicolors"))
-set termguicolors
+  set termguicolors
 endif
 
 if &term =~ '256color'
@@ -165,6 +167,7 @@ set splitbelow
 set splitright
 set scrolloff=9999
 set list listchars=trail:-,eol:¬
+set cursorline
 
 "better wrapping
 set breakindent
@@ -231,8 +234,15 @@ command! Zconfig :find ~/.zshrc
 command! Tconfig :find ~/.tmux.conf
 command! Wa :wa
 
+"for quantum to look nice
 let g:quantum_black=1
 let g:quantum_italics=1
+
+" open a session on startup
+" function! OpenSessionOnStartup()
+"   let session = xolox#session#prompt_for_name('open')
+"   execute :openSession session
+" endfunction
 
 " Experimental stuff
 " CtrlP auto cache clearing.
@@ -245,6 +255,9 @@ function! SetupCtrlP()
     augroup END
   endif
 endfunction
+
 if has("autocmd")
   autocmd VimEnter * :call SetupCtrlP()
+  " autocmd VimEnter * :call OpenSessionOnStartup()
 endif
+
