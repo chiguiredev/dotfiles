@@ -4,42 +4,40 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
-
 "productivity plugins
-Plug 'pangloss/vim-javascript'
-Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-surround'
-Plug 'mattn/emmet-vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'raimondi/delimitmate'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-airline'
-Plug 'tmhedberg/matchit'
+Plug 'thaerkh/vim-indentguides'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'raimondi/delimitmate'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'stanangeloff/php.vim'
-Plug 'shawncplus/skittles_berry'
-Plug 'valloric/MatchTagAlways'
-Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc'
-Plug 'w0rp/ale'
+Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-commentary'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'valloric/MatchTagAlways'
+Plug 'w0rp/ale'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 Plug 'ap/vim-css-color'
+Plug 'tpope/vim-vividchalk'
 
 "fancy plugins
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-dispatch'
 Plug 'jungomi/vim-mdnquery'
-Plug 'zyedidia/vim-snake'
-" Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-dispatch'
 
 "color
+Plug 'shawncplus/skittles_berry'
+Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'dracula/vim'
+Plug 'rhysd/vim-color-spring-night'
 
 
 "initialize plugin system
@@ -49,9 +47,9 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+" Disable Background Color Erase (BCE) so that color schemes
+" work properly when Vim is used inside tmux and GNU screen.
 if &term =~ '256color'
-  " Disable Background Color Erase (BCE) so that color schemes
-  " work properly when Vim is used inside tmux and GNU screen.
   set t_ut=
 endif
 
@@ -59,21 +57,28 @@ set undofile
 set undodir=~/.vim/undodir
 
 "mappings
+"dude, default leader is a pain in the ass
 let mapleader=" "
 nnoremap <leader>h :nohlsearch<CR>
 nnoremap <leader>e :e#<CR>
-nnoremap <leader>b :ls<CR>:b<Space>
 nnoremap <leader>r :reg<CR>
+"remove trailing whitespace
 nnoremap <leader>rtw :%s/\s\+$//e<CR>
 nnoremap <leader>y "+yy
 nnoremap <leader>p "+p
 nnoremap <leader><left> :vertical resize +10<CR>
 nnoremap <leader><right> :vertical resize -10<CR>
-nnoremap <leader>i :IndentGuidesToggle<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>m :CtrlPMRUFiles<CR>
 nnoremap <leader>o :only<CR>
 nnoremap p ]p
 nnoremap P [p
+nnoremap <cr> G
+
+" session management
+nnoremap <leader>os :OpenSession<Space>
+nnoremap <leader>ss :SaveSession<Space>
+nnoremap <leader>ds :DeleteSession<CR>
 
 "make j and k jump rows not lines
 nnoremap j gj
@@ -95,9 +100,10 @@ vnoremap <Tab> %
 
 nnoremap <C-f> :NERDTreeToggle<CR>
 
-"closing a tab or tab
+"closing a tab
 nnoremap <C-d> :close<CR>
 
+"move a line with the arrow keys
 nnoremap <down> ddp
 nnoremap <left> gT
 nnoremap <right> gt
@@ -135,14 +141,27 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+nnoremap <C-s> :wa<CR>
+
 "autocomplete file name and lines easier
 inoremap <C-f> <C-x><C-f>
 inoremap <C-l> <C-x><C-l>
 inoremap <C-o> <C-x><C-o>
 
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
+
 "usual config
+set shortmess=atOI
 set backspace=eol,start,indent
-set ttimeoutlen=5
+set ttimeoutlen=1
+set timeoutlen=400
 set noshowmode
 set laststatus=2
 set diffopt+=vertical
@@ -154,7 +173,8 @@ set noswapfile
 set ignorecase
 set smartcase
 set infercase "completions are now case aware
-colorscheme onedark
+colorscheme jellybeans
+set colorcolumn=81
 set clipboard=unnamedplus
 filetype plugin on
 filetype indent on
@@ -166,8 +186,7 @@ syntax enable
 set splitbelow
 set splitright
 set scrolloff=9999
-set list listchars=trail:-,eol:¬
-set cursorline
+set list listchars=trail:·,eol:¬
 
 "better wrapping
 set breakindent
@@ -195,21 +214,30 @@ set hlsearch
 set incsearch
 set modelines=1
 set wildmenu
-
 "ignore stuff in wildmenu
-set wildignore+=**/node_modules**
+set wildignore+=**/node_modules**,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
 "Plugin related config
+
+"MDNquery settings
+let g:mdnquery_auto_focus = 1
+let g:mdnquery_topics = ['js', 'css', 'html']
+let g:mdnquery_vertical = 1
+
+"NERDTree config
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeAutoCenterThreshold = 1
+let NERDTreeCascadeSingleChildDir = 0
 
-"this from vim-jsx
 "enable jsx syntax highlighing in javascript files
 let g:jsx_ext_required = 0
 
 let g:airline_powerline_fonts = 1
+let g:airline_theme='onedark'
+
 let g:ctrlp_map = '<leader>f'
 
 "letting matchtagalways to work inside php files and such
@@ -225,18 +253,31 @@ let delimitMate_expand_cr = 1
 "Ale configuration
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = '!'
+let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '?'
 
 "custom commands
-command! Vconfig :find ~/.vimrc
-command! Zconfig :find ~/.zshrc
-command! Tconfig :find ~/.tmux.conf
-command! Wa :wa
+command! Vconfig find ~/.vimrc
+command! Zconfig find ~/.zshrc
+command! Tconfig find ~/.tmux.conf
+command! Wa wa
+command! Vs vs
+command! Sp sp
+command! Q q
+command! Qall qall
+command! QA qall
+command! E e
+command! W w
+command! Wq wq
 
-"for quantum to look nice
+"for quantum to look nicer than default
 let g:quantum_black=1
 let g:quantum_italics=1
+
+" indetguides ignore filetypes
+let g:indentguides_ignorelist = ['txt', 'help']
+
+" Experimental stuff
 
 " open a session on startup
 " function! OpenSessionOnStartup()
@@ -244,7 +285,6 @@ let g:quantum_italics=1
 "   execute :openSession session
 " endfunction
 
-" Experimental stuff
 " CtrlP auto cache clearing.
 function! SetupCtrlP()
   if exists("g:loaded_ctrlp") && g:loaded_ctrlp
@@ -260,4 +300,3 @@ if has("autocmd")
   autocmd VimEnter * :call SetupCtrlP()
   " autocmd VimEnter * :call OpenSessionOnStartup()
 endif
-
