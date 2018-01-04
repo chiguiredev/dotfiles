@@ -38,7 +38,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'rhysd/vim-color-spring-night'
-
+Plug 'jdkanani/vim-material-theme'
+Plug 'kristijanhusak/vim-hybrid-material'
 
 "initialize plugin system
 call plug#end()
@@ -74,6 +75,10 @@ nnoremap <leader>o :only<CR>
 nnoremap p ]p
 nnoremap P [p
 nnoremap <cr> G
+
+" create splits easily
+nnoremap <leader>vs :vs<CR>
+nnoremap <leader>sp :sp<CR>
 
 " session management
 nnoremap <leader>os :OpenSession<Space>
@@ -173,7 +178,7 @@ set noswapfile
 set ignorecase
 set smartcase
 set infercase "completions are now case aware
-colorscheme jellybeans
+colorscheme onedark
 set colorcolumn=81
 set clipboard=unnamedplus
 filetype plugin on
@@ -187,6 +192,7 @@ set splitbelow
 set splitright
 set scrolloff=9999
 set list listchars=trail:·,eol:¬
+set background=dark
 
 "better wrapping
 set breakindent
@@ -266,6 +272,7 @@ command! Sp sp
 command! Q q
 command! Qall qall
 command! QA qall
+command! Aq qall
 command! E e
 command! W w
 command! Wq wq
