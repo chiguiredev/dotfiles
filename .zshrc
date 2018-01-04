@@ -106,7 +106,16 @@ alias rmpacdb="sudo rm /var/lib/pacman/db.lck"
 alias xampphp="/opt/lampp/bin/php"
 alias xampstart="sudo /opt/lampp/lampp start"
 
+#tmus alias
+alias tdetach="tmux detach-client"
+alias tattach="tmux attach -t"
+
 # this one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias tmux="TERM=screen-256color-bce tmux"
+
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
