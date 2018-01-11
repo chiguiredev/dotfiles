@@ -1,6 +1,4 @@
 set nocompatible
-"vim-plug config
-"directory for plugins
 
 call plug#begin('~/.vim/plugged')
 
@@ -25,6 +23,8 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-vividchalk'
+Plug 'FooSoft/vim-argwrap'
+Plug 'junegunn/vim-easy-align'
 
 "fancy plugins
 Plug 'airblade/vim-gitgutter'
@@ -57,6 +57,68 @@ endif
 set undofile
 set undodir=~/.vim/undodir
 
+"usual config
+set shortmess=atOI
+set backspace=eol,start,indent
+set ttimeoutlen=1
+set timeoutlen=400
+set noshowmode
+set laststatus=2
+set diffopt+=vertical
+set matchpairs+=<:>
+set title
+set lazyredraw
+set hidden
+set nobackup
+set noswapfile
+set smartcase
+set infercase "completions are now case aware
+colorscheme onedark
+set colorcolumn=81
+set clipboard=unnamedplus
+filetype plugin on
+filetype indent on
+set autoread
+set ruler
+set showmatch
+set showcmd
+syntax enable
+set splitbelow
+set splitright
+set scrolloff=9999
+set list listchars=trail:·,eol:¬
+set background=dark
+
+"better wrapping
+set breakindent
+set showbreak=\\\
+
+"spaces
+set expandtab
+set smarttab
+set shiftwidth=2
+set tabstop=2
+
+"not so usual config
+set updatetime=300
+"identation
+set ai "aunto ident
+set si "smart ident
+
+"lines number
+set number
+set relativenumber
+
+"searching
+set incsearch
+set hlsearch
+set incsearch
+set modelines=1
+set wildmenu
+"ignore stuff in wildmenu
+set wildignore+=**/node_modules**,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+
+
 "mappings
 "dude, default leader is a pain in the ass
 let mapleader=" "
@@ -76,6 +138,12 @@ nnoremap p ]p
 nnoremap P [p
 nnoremap <cr> G
 
+" save
+nnoremap <leader>s :wa<CR>
+
+" for the win
+nnoremap <silent> <leader>a :ArgWrap<CR>
+
 " create splits easily
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>sp :sp<CR>
@@ -86,8 +154,10 @@ nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>ds :DeleteSession<CR>
 
 "make j and k jump rows not lines
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 "no more ex mode please
 nnoremap Q <Nop>
@@ -99,9 +169,6 @@ nnoremap <S-k> {
 vnoremap <S-j> }
 vnoremap <S-k> {
 
-"jump to matching pairs easily, with Tab
-nnoremap <Tab> %
-vnoremap <Tab> %
 
 nnoremap <C-f> :NERDTreeToggle<CR>
 
@@ -161,68 +228,6 @@ vnoremap K :m '<-2<CR>gv=gv
 vmap < <gv
 vmap > >gv
 
-
-"usual config
-set shortmess=atOI
-set backspace=eol,start,indent
-set ttimeoutlen=1
-set timeoutlen=400
-set noshowmode
-set laststatus=2
-set diffopt+=vertical
-set title
-set lazyredraw
-set hidden
-set nobackup
-set noswapfile
-set ignorecase
-set smartcase
-set infercase "completions are now case aware
-colorscheme onedark
-set colorcolumn=81
-set clipboard=unnamedplus
-filetype plugin on
-filetype indent on
-set autoread
-set ruler
-set showmatch
-set showcmd
-syntax enable
-set splitbelow
-set splitright
-set scrolloff=9999
-set list listchars=trail:·,eol:¬
-set background=dark
-
-"better wrapping
-set breakindent
-set showbreak=\\\
-
-"spaces
-set expandtab
-set smarttab
-set shiftwidth=2
-set tabstop=2
-
-"not so usual config
-set updatetime=300
-"identation
-set ai "aunto ident
-set si "smart ident
-
-"lines number
-set number
-set relativenumber
-
-"searching
-set incsearch
-set hlsearch
-set incsearch
-set modelines=1
-set wildmenu
-"ignore stuff in wildmenu
-set wildignore+=**/node_modules**,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-
 "Plugin related config
 
 "MDNquery settings
@@ -262,7 +267,13 @@ let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '?'
 
-"custom commands
+" easy align conf
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+map ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" custom commands
 command! Vconfig find ~/.vimrc
 command! Zconfig find ~/.zshrc
 command! Tconfig find ~/.tmux.conf
@@ -277,12 +288,18 @@ command! E e
 command! W w
 command! Wq wq
 
+" equalize splits when vim is resized
+autocmd VimResized * wincmd =
+
 "for quantum to look nicer than default
 let g:quantum_black=1
 let g:quantum_italics=1
 
 " indetguides ignore filetypes
 let g:indentguides_ignorelist = ['txt', 'help']
+
+" git gutter config
+let g:gitgutter_max_signs = 500
 
 " Experimental stuff
 

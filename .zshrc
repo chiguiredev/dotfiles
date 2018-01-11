@@ -92,6 +92,7 @@ alias vconfig="vim ~/.vimrc"
 alias tconfig="vim ~/.tmux.conf"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias cim="vim"
+alias p="pwd"
 alias vi="vim"
 alias q="exit"
 alias :q="exit"
@@ -109,6 +110,8 @@ alias xampstart="sudo /opt/lampp/lampp start"
 #tmus alias
 alias tdetach="tmux detach-client"
 alias tattach="tmux attach -t"
+alias tkill="tmux kill-session -t"
+alias tls="tmux ls"
 
 # this one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
