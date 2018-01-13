@@ -5,23 +5,23 @@
 set $mod Mod4
 
 set $ws1  "1: web"
-set $ws2  "2: term"
-set $ws3  "3: chat"
-set $ws4  "4: "
-set $ws5  "5: "
-set $ws6  "6: "
-set $ws7  "7: "
-set $ws8  "8: "
-set $ws9  "9: "
-set $ws10 "10: "
+set $ws2  "2: web-term"
+set $ws3  "3: term"
+set $ws4  "4: chat"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
 
-font monospace-bold
+font pango:monospace 8
 focus_follows_mouse no
 
 # remove ugly titlebars
 # fix graphics glitch
 new_window none
-for_window [class="^.*"] border pixel 0
+for_window [class = "^.*"] border pixel 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -39,7 +39,9 @@ bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 # increase size of font for readability
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
+
+bindsym $mod+x exec i3lock
 
 # change focus
 # default keys altered to match those of vim
@@ -170,6 +172,18 @@ bar {
   status_command i3status
 }
 
+# auto workspaces on execution
+assign [class="Firefox Beta"] $ws1
+assign [class="Devtools"] $ws2
+assign [class="TelegramDesktop"] $ws4
+assign [class="Tilix"] $ws3
+
 # auto start
 exec --no-startup-id setxkbmap -layout latam
 exec --no-startup-id nm-applet
+exec_always --no-startup-id xsetroot -solid "#353638"
+exec --no-startup-id unclutter --timeout 2
+
+# Other setup tools
+# lxappearance gtk-chtheme
+# xprop

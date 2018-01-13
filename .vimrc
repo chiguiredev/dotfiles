@@ -127,8 +127,6 @@ nnoremap <leader>e :e#<CR>
 nnoremap <leader>r :reg<CR>
 "remove trailing whitespace
 nnoremap <leader>rtw :%s/\s\+$//e<CR>
-nnoremap <leader>y "+yy
-nnoremap <leader>p "+p
 nnoremap <leader><left> :vertical resize +10<CR>
 nnoremap <leader><right> :vertical resize -10<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
@@ -279,6 +277,7 @@ nmap ga <Plug>(EasyAlign)
 command! Vconfig find ~/.vimrc
 command! Zconfig find ~/.zshrc
 command! Tconfig find ~/.tmux.conf
+command! Iconfig find ~/.i3/config
 command! Wa wa
 command! Vs vs
 command! Sp sp
