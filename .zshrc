@@ -106,6 +106,7 @@ alias srcme="source ~/.zshrc"
 alias rmpacdb="sudo rm /var/lib/pacman/db.lck"
 alias xampphp="/opt/lampp/bin/php"
 alias xampstart="sudo /opt/lampp/lampp start"
+alias fuck="sudo"
 
 #tmus alias
 alias tdetach="tmux detach-client"

@@ -140,8 +140,10 @@ nnoremap <cr> G
 
 " save
 nnoremap <leader>s :wa<CR>
+" quit
+nnoremap <leader>q :qa<CR>
 
-" for the win
+" Argument wrapping
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
 " create splits easily
