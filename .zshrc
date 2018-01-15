@@ -92,6 +92,7 @@ alias vconfig="vim ~/.vimrc"
 alias tconfig="vim ~/.tmux.conf"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias iconfig="vim ~/.i3/config"
+alias cconfig="vim ~/.config/compton.conf"
 alias cim="vim"
 alias p="pwd"
 alias vi="vim"
@@ -122,5 +123,5 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
+  source /etc/profile.d/vte.sh
 fi

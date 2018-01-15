@@ -173,16 +173,23 @@ bar {
 }
 
 # auto workspaces on execution
-assign [class="Firefox Beta"] $ws1
 assign [class="Devtools"] $ws2
+assign [class="Firefox Beta"] $ws1
 assign [class="TelegramDesktop"] $ws4
 assign [class="Tilix"] $ws3
 
 # auto start
 exec --no-startup-id setxkbmap -layout latam
 exec --no-startup-id nm-applet
-exec_always --no-startup-id xsetroot -solid "#353638"
 exec --no-startup-id unclutter --timeout 2
+exec_always --no-startup-id volumeicon
+exec_always --no-startup-id compton --config /home/rafael/.config/compton.conf
+exec_always --no-startup-id feh --bg-fill /home/rafael/Pictures/awesomewallpaper.jpg
+
+# auto layout on startup
+exec --no-startup-id firefox-beta
+exec --no-startup-id tilix
+exec --no-startup-id telegram
 
 # Other setup tools
 # lxappearance gtk-chtheme
