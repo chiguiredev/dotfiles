@@ -278,6 +278,7 @@ command! Vconfig find ~/.vimrc
 command! Zconfig find ~/.zshrc
 command! Tconfig find ~/.tmux.conf
 command! Iconfig find ~/.i3/config
+command! Cconfig find ~/.config/compton.conf
 command! Wa wa
 command! Vs vs
 command! Sp sp
