@@ -85,13 +85,12 @@ set showcmd
 syntax enable
 set splitbelow
 set splitright
-set scrolloff=9999
 set list listchars=trail:·,eol:¬
 set background=dark
 
 "better wrapping
 set breakindent
-set showbreak=\\\
+set showbreak=^^^
 
 "spaces
 set expandtab
@@ -153,12 +152,6 @@ nnoremap <leader>os :OpenSession<Space>
 nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>ds :DeleteSession<CR>
 
-"make j and k jump rows not lines
-" nnoremap j gj
-" nnoremap k gk
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
-
 "no more ex mode please
 nnoremap Q <Nop>
 map q: <Nop>
@@ -199,6 +192,9 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap } }zz
 nnoremap { {zz
+nnoremap j gjzz
+nnoremap k gkzz
+nnoremap G Gzz
 
 " move to beginning/end of line
 noremap B ^

@@ -26,10 +26,8 @@ for_window [class = "^.*"] border pixel 0
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-smart_gaps on
-gaps inner 8
-gaps outer 1
-
+gaps inner 4
+gaps outer 0
 
 # start a terminal
 bindsym $mod+Return exec tilix
@@ -175,27 +173,28 @@ bindsym $mod+r mode "resize"
 bindsym Control+b bar hidden_state toggle
 
 bar {
+  status_command i3status
   mode hide
   hidden_state hide
   modifier none
-  status_command i3status
 }
 
 # auto workspaces on execution
 assign [class =    "Firefox Beta"] $ws1
 assign [class =        "Devtools"] $ws2
 assign [class =           "Tilix"] $ws3
+assign [class =      "PRO.x86_64"] $ws6
 
 # auto start
 exec --no-startup-id setxkbmap -layout latam
 exec --no-startup-id unclutter --timeout 1
-exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
+exec_always --no-startup-id caffeine
+exec_always --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-fill /home/rafael/Pictures/awesomewallpaper.jpg
 exec --no-startup-id firefox-beta
 exec --no-startup-id tilix
 exec_always --no-startup-id compton --config /home/rafael/.config/compton.conf
-exec --no-startup-id ulauncher
 
 # Other setup tools
 # lxappearance gtk-chtheme

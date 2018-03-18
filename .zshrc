@@ -58,7 +58,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract npm z)
+plugins=(git extract npm z colorize)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,12 +115,18 @@ alias tdetach="tmux detach-client"
 alias tattach="tmux attach -t"
 alias tkill="tmux kill-session -t"
 alias tls="tmux ls"
+alias oraclerun="docker run -d -p 49160:22 -p 49161:1521 -p 8080:8080 -e ORACLE_ENABLE_XDB=true wnameless/oracle-xe-11g"
+alias oracle_check="curl -XGET 'http://localhost:8080'"
+alias proxyman="cd /home/rafael/.proxyman && ./main.sh"
+alias pokemon="cd /opt/PROLinux && ./PRO.x86_64"
+alias suspend_computer="systemctl suspend"
+alias create_hotspot="sudo create_ap wlo1 enp8s0 rafael 24780714"
+alias clean_hotspot="sudo create_ap --fix-unmanaged"
 
 # this one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias tmux="TERM=screen-256color-bce tmux"
-
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
