@@ -26,14 +26,15 @@ for_window [class = "^.*"] border pixel 0
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-gaps inner 4
+gaps inner 6
 gaps outer 0
+smart_gaps on
 
 # start a terminal
 bindsym $mod+Return exec tilix
 
 # screenshots!!
-bindsym $mod+p exec gnome-screeshot -i
+bindsym $mod+p exec gnome-screenshot -i
 
 # kill focused window
 bindsym $mod+q kill
@@ -99,16 +100,16 @@ bindsym $mod+0   workspace $ws10
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
-bindsym $mod+Shift+exclam      move workspace $ws1
-bindsym $mod+Shift+quotedbl    move workspace $ws2
-bindsym $mod+Shift+sterling    move workspace $ws3
-bindsym $mod+Shift+dollar      move workspace $ws4
-bindsym $mod+Shift+percent     move workspace $ws5
-bindsym $mod+Shift+ampersand   move workspace $ws6
-bindsym $mod+Shift+asciicircum move workspace $ws7
-bindsym $mod+Shift+parenleft   move workspace $ws8
-bindsym $mod+Shift+parenright  move workspace $ws9
-bindsym $mod+Shift+asterisk    move workspace $ws10
+bindsym $mod+Shift+exclam     move workspace $ws1
+bindsym $mod+Shift+quotedbl   move workspace $ws2
+bindsym $mod+Shift+sterling   move workspace $ws3
+bindsym $mod+Shift+dollar     move workspace $ws4
+bindsym $mod+Shift+percent    move workspace $ws5
+bindsym $mod+Shift+ampersand  move workspace $ws6
+bindsym $mod+Shift+pound      move workspace $ws7
+bindsym $mod+Shift+parenleft  move workspace $ws8
+bindsym $mod+Shift+parenright move workspace $ws9
+bindsym $mod+Shift+equal      move workspace $ws10
 
 # app relate config
 for_window [class="TelegramDesktop"] floating enable
@@ -118,9 +119,10 @@ bindsym $mod+t exec --no-startup-id telegram
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
-# restart i3 inplace (preserves your layout/session, can be used to
 
+# restart i3 inplace (preserves your layout/session, can be used to
 bindsym $mod+Shift+R restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exit
 
@@ -136,34 +138,34 @@ mode    "resize" {
 # They resize the border in the direction you pressed, e.g.
 # when pressing left, the window is resized so that it has
 # more space on its left
-bindsym h        resize shrink left 10 px or 10 ppt
-bindsym Shift+H  resize grow   left 10 px or 10 ppt
+  bindsym h        resize shrink left 10 px or 10 ppt
+  bindsym Shift+H  resize grow   left 10 px or 10 ppt
 
-bindsym j       resize shrink down 10 px or 10 ppt
-bindsym Shift+J resize grow   down 10 px or 10 ppt
+  bindsym j       resize shrink down 10 px or 10 ppt
+  bindsym Shift+J resize grow   down 10 px or 10 ppt
 
-bindsym k       resize shrink up 10 px or 10 ppt
-bindsym Shift+K resize grow   up 10 px or 10 ppt
+  bindsym k       resize shrink up 10 px or 10 ppt
+  bindsym Shift+K resize grow   up 10 px or 10 ppt
 
-bindsym l       resize shrink right 10 px or 10 ppt
-bindsym Shift+L resize grow   right 10 px or 10 ppt
+  bindsym l       resize shrink right 10 px or 10 ppt
+  bindsym Shift+L resize grow   right 10 px or 10 ppt
 
 # same bindings, but for the arrow keys
-bindsym Left       resize shrink left 10 px or 10 ppt
-bindsym Shift+Left resize grow   left 10 px or 10 ppt
+  bindsym Left       resize shrink left 10 px or 10 ppt
+  bindsym Shift+Left resize grow   left 10 px or 10 ppt
 
-bindsym Down       resize shrink down 10 px or 10 ppt
-bindsym Shift+Down resize grow   down 10 px or 10 ppt
+  bindsym Down       resize shrink down 10 px or 10 ppt
+  bindsym Shift+Down resize grow   down 10 px or 10 ppt
 
-bindsym Up       resize shrink up 10 px or 10 ppt
-bindsym Shift+Up resize grow   up 10 px or 10 ppt
+  bindsym Up       resize shrink up 10 px or 10 ppt
+  bindsym Shift+Up resize grow   up 10 px or 10 ppt
 
-bindsym Right       resize shrink right 10 px or 10 ppt
-bindsym Shift+Right resize grow   right 10 px or 10 ppt
+  bindsym Right       resize shrink right 10 px or 10 ppt
+  bindsym Shift+Right resize grow   right 10 px or 10 ppt
 
 # back to normal: Enter or Escape
-bindsym Return mode "default"
-bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -180,16 +182,16 @@ bar {
 }
 
 # auto workspaces on execution
-assign [class =    "Firefox Beta"] $ws1
-assign [class =        "Devtools"] $ws2
-assign [class =           "Tilix"] $ws3
-assign [class =      "PRO.x86_64"] $ws6
+assign [class = "Firefox Beta"] $ws1
+assign [class = "Devtools"] $ws2
+assign [class = "Tilix"] $ws3
+assign [class = "PRO.x86_64"] $ws6
 
 # auto start
 exec --no-startup-id setxkbmap -layout latam
 exec --no-startup-id unclutter --timeout 1
 exec --no-startup-id volumeicon
-exec_always --no-startup-id caffeine
+exec --no-startup-id caffeine
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-fill /home/rafael/Pictures/awesomewallpaper.jpg
 exec --no-startup-id firefox-beta

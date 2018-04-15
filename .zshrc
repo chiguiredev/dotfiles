@@ -24,7 +24,7 @@ ZSH_THEME="agnoster"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+  DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -87,46 +87,77 @@ fi
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 # Example aliases
+
+# Getting into config files
 alias zconfig="vim ~/.zshrc"
 alias vconfig="vim ~/.vimrc"
 alias tconfig="vim ~/.tmux.conf"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias iconfig="vim ~/.i3/config"
 alias cconfig="vim ~/.config/compton.conf"
+
+# Every one that uses vim needs these ones
 alias cim="vim"
 alias p="pwd"
 alias vi="vim"
 alias q="exit"
 alias :q="exit"
 alias c="clear"
-alias t="tmux"
+alias suvim="sudo -E vim"
+
+# Trash-cli alias
 alias tp="trash-put"
 alias tl="trash-list"
 alias tr="trash-restore"
-alias suvim="sudo -E vim"
+alias temp="trash-empty"
+
+# Update the zsh config on the fly
 alias srcme="source ~/.zshrc"
+
+# When pacmandb is being stupid
 alias rmpacdb="sudo rm /var/lib/pacman/db.lck"
+
+# Php bullshit
 alias xampphp="/opt/lampp/bin/php"
 alias xampstart="sudo /opt/lampp/lampp start"
+
+# Why not?
 alias fuck="sudo"
 
-#tmus alias
+# Tmus alias
+alias t="tmux"
 alias tdetach="tmux detach-client"
 alias tattach="tmux attach -t"
 alias tkill="tmux kill-session -t"
 alias tls="tmux ls"
+
+# Oracle db and docker
 alias oraclerun="docker run -d -p 49160:22 -p 49161:1521 -p 8080:8080 -e ORACLE_ENABLE_XDB=true wnameless/oracle-xe-11g"
 alias oracle_check="curl -XGET 'http://localhost:8080'"
+
+# Execute proxyman, I don't know why the hell the symbolic link does not work
 alias proxyman="cd /home/rafael/.proxyman && ./main.sh"
-alias pokemon="cd /opt/PROLinux && ./PRO.x86_64"
-alias suspend_computer="systemctl suspend"
+
+# Easy hotspot setup
 alias create_hotspot="sudo create_ap wlo1 enp8s0 rafael 24780714"
 alias clean_hotspot="sudo create_ap --fix-unmanaged"
 
-# this one is to manage the dotfiles repo
+alias pokemon="cd /opt/PROLinux && ./PRO.x86_64"
+alias alibaba="ip addr | grep inet"
+
+# This one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# Not quite sure if I need it, but I won't delete it
 alias tmux="TERM=screen-256color-bce tmux"
+
+# Adding the path where yarn global binaries are store
+export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
+# More yarn bullshit
+alias ys='yarn start'
+alias yb='yarn build'
+
+alias update="sudo pacman -Syu"
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh

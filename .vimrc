@@ -25,6 +25,7 @@ Plug 'ap/vim-css-color'
 Plug 'tpope/vim-vividchalk'
 Plug 'FooSoft/vim-argwrap'
 Plug 'junegunn/vim-easy-align'
+Plug 'mxw/vim-jsx'
 
 "fancy plugins
 Plug 'airblade/vim-gitgutter'
@@ -90,7 +91,7 @@ set background=dark
 
 "better wrapping
 set breakindent
-set showbreak=^^^
+set showbreak=^
 
 "spaces
 set expandtab
@@ -157,11 +158,10 @@ nnoremap Q <Nop>
 map q: <Nop>
 
 "paragraph jumping
-nnoremap <S-j> }
-nnoremap <S-k> {
-vnoremap <S-j> }
-vnoremap <S-k> {
-
+nnoremap <S-j> }zz
+nnoremap <S-k> {zz
+vnoremap <S-j> }zz
+vnoremap <S-k> {zz
 
 nnoremap <C-f> :NERDTreeToggle<CR>
 
@@ -248,7 +248,7 @@ let g:airline_theme='onedark'
 let g:ctrlp_map = '<leader>f'
 
 "letting matchtagalways to work inside php files and such
-let g:mta_filetypes = { 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1 ,'php' : 1, 'javascript.jsx' : 1}
+let g:mta_filetypes = { 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1 ,'php' : 1, '.jsx' : 1}
 
 "change default emmet shortcut
 let g:user_emmet_leader_key='<C-z>'
