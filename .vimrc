@@ -22,17 +22,20 @@ Plug 'w0rp/ale'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'ap/vim-css-color'
-Plug 'tpope/vim-vividchalk'
 Plug 'FooSoft/vim-argwrap'
 Plug 'junegunn/vim-easy-align'
 Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-dispatch'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'styled-components/vim-styled-components'
+Plug 'mikewest/vimroom'
 
 "fancy plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'jungomi/vim-mdnquery'
-Plug 'tpope/vim-dispatch'
 
 "color
+Plug 'tpope/vim-vividchalk'
 Plug 'shawncplus/skittles_berry'
 Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
@@ -118,12 +121,11 @@ set wildmenu
 "ignore stuff in wildmenu
 set wildignore+=**/node_modules**,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
-
 "mappings
 "dude, default leader is a pain in the ass
 let mapleader=" "
 nnoremap <leader>h :nohlsearch<CR>
-nnoremap <leader>e :e#<CR>
+nnoremap <leader>e :e#<CR>zz
 nnoremap <leader>r :reg<CR>
 "remove trailing whitespace
 nnoremap <leader>rtw :%s/\s\+$//e<CR>
@@ -132,8 +134,10 @@ nnoremap <leader><right> :vertical resize -10<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>m :CtrlPMRUFiles<CR>
 nnoremap <leader>o :only<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <leader>fg :CtrlPFunky<CR>
 nnoremap p ]p
-nnoremap P [p
+nnoremap P [P
 nnoremap <cr> G
 
 " save
@@ -224,6 +228,8 @@ vnoremap K :m '<-2<CR>gv=gv
 vmap < <gv
 vmap > >gv
 
+noremap <C-o> <C-o>zz
+
 "Plugin related config
 
 "MDNquery settings
@@ -248,7 +254,7 @@ let g:airline_theme='onedark'
 let g:ctrlp_map = '<leader>f'
 
 "letting matchtagalways to work inside php files and such
-let g:mta_filetypes = { 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1 ,'php' : 1, '.jsx' : 1}
+let g:mta_filetypes = { 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1 ,'php' : 1, 'jsx' : 1, 'js' : 1}
 
 "change default emmet shortcut
 let g:user_emmet_leader_key='<C-z>'
@@ -262,12 +268,17 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '?'
+let g:ale_javascript_eslint_use_global = 1
 
 " easy align conf
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 map ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Spell on tricks
+imap <c-k> <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <c-k> [s1z=<c-o>
 
 " custom commands
 command! Vconfig find ~/.vimrc
@@ -294,7 +305,7 @@ let g:quantum_black=1
 let g:quantum_italics=1
 
 " indetguides ignore filetypes
-let g:indentguides_ignorelist = ['txt', 'help']
+let g:indentguides_ignorelist = ['text', 'help']
 
 " git gutter config
 let g:gitgutter_max_signs = 500
@@ -306,6 +317,11 @@ let g:gitgutter_max_signs = 500
 "   let session = xolox#session#prompt_for_name('open')
 "   execute :openSession session
 " endfunction
+
+nnoremap ZZ <nop>
+
+" abbreviations
+iab clog console.log();<ESC>hi
 
 " CtrlP auto cache clearing.
 function! SetupCtrlP()
@@ -322,3 +338,5 @@ if has("autocmd")
   autocmd VimEnter * :call SetupCtrlP()
   " autocmd VimEnter * :call OpenSessionOnStartup()
 endif
+
+autocmd FileType javascript.jsx set omnifunc=csscomplete#CompleteCSS

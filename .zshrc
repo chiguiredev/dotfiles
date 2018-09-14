@@ -1,6 +1,9 @@
 # want your terminal to support 256 color schemes? I do ...
 export TERM="xterm-256color"
 
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
+
 # allows you to type Bash style comments on your command line
 # good 'ol Bash
 setopt interactivecomments
@@ -14,8 +17,8 @@ export ZSH=/home/rafael/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="agnoster"
 ZSH_THEME="agnoster"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -58,7 +61,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract npm z colorize)
+plugins=(git extract npm z colorize zsh-autosuggestions vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,6 +126,8 @@ alias xampstart="sudo /opt/lampp/lampp start"
 
 # Why not?
 alias fuck="sudo"
+alias pi="ping 8.8.8.8"
+alias myip="ip addr | grep enp && ip addr | grep wlp"
 
 # Tmus alias
 alias t="tmux"
@@ -139,7 +144,7 @@ alias oracle_check="curl -XGET 'http://localhost:8080'"
 alias proxyman="cd /home/rafael/.proxyman && ./main.sh"
 
 # Easy hotspot setup
-alias create_hotspot="sudo create_ap wlo1 enp8s0 rafael 24780714"
+alias create_hotspot="sudo create_ap wlp9s0f0 enp8s0 rafael 24780714"
 alias clean_hotspot="sudo create_ap --fix-unmanaged"
 
 alias pokemon="cd /opt/PROLinux && ./PRO.x86_64"
@@ -153,11 +158,24 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 # Adding the path where yarn global binaries are store
 export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
+
 # More yarn bullshit
 alias ys='yarn start'
 alias yb='yarn build'
+alias yi='yarn install'
+
+# Open vim with no config
+alias noconfvim="vim -u NONE"
 
 alias update="sudo pacman -Syu"
+
+# Image carousel with feh
+alias img_carousel="feh -FZS"
+
+#wps
+alias word="wps"
+alias powerpoint="wpp"
+alias excel="et"
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
