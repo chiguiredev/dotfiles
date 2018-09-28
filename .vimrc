@@ -44,6 +44,7 @@ Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'rhysd/vim-color-spring-night'
 Plug 'jdkanani/vim-material-theme'
 Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'andreypopp/vim-colors-plain'
 
 "initialize plugin system
 call plug#end()

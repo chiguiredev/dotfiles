@@ -169,6 +169,8 @@ alias noconfvim="vim -u NONE"
 
 alias update="sudo pacman -Syu"
 
+alias cat="bat"
+
 # Image carousel with feh
 alias img_carousel="feh -FZS"
 
