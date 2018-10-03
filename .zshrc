@@ -152,6 +152,7 @@ alias alibaba="ip addr | grep inet"
 
 # This one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotstatus='dotfiles status -uno'
 
 # Not quite sure if I need it, but I won't delete it
 alias tmux="TERM=screen-256color-bce tmux"

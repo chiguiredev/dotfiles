@@ -20,7 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'valloric/MatchTagAlways'
 Plug 'w0rp/ale'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+" Plug 'xolox/vim-session'
 Plug 'ap/vim-css-color'
 Plug 'FooSoft/vim-argwrap'
 Plug 'junegunn/vim-easy-align'
@@ -45,6 +45,8 @@ Plug 'rhysd/vim-color-spring-night'
 Plug 'jdkanani/vim-material-theme'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'andreypopp/vim-colors-plain'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'tomasiser/vim-code-dark'
 
 "initialize plugin system
 call plug#end()
@@ -304,6 +306,9 @@ autocmd VimResized * wincmd =
 "for quantum to look nicer than default
 let g:quantum_black=1
 let g:quantum_italics=1
+
+" one dark config
+let g:onedark_termcolors=256
 
 " indetguides ignore filetypes
 let g:indentguides_ignorelist = ['text', 'help']
