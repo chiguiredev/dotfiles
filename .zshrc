@@ -61,7 +61,9 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract npm z colorize zsh-autosuggestions vi-mode)
+plugins=(
+  git extract npm z colorize zsh-autosuggestions vi-mode shrink_path
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -145,7 +147,11 @@ alias proxyman="cd /home/rafael/.proxyman && ./main.sh"
 
 # Easy hotspot setup
 alias create_hotspot="sudo create_ap wlp9s0f0 enp8s0 rafael 24780714"
+alias private_hotspot="sudo create_ap wlp9s0f0 enp8s0 lala 24780714"
 alias clean_hotspot="sudo create_ap --fix-unmanaged"
+
+#sweet placing of  secndary display
+alias homeoffice="xrandr --output DP1 --auto --left-of eDP1"
 
 alias pokemon="cd /opt/PROLinux && ./PRO.x86_64"
 alias alibaba="ip addr | grep inet"

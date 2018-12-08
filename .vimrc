@@ -89,7 +89,7 @@ set autoread
 set ruler
 set showmatch
 set showcmd
-syntax enable
+syntax on
 set splitbelow
 set splitright
 set list listchars=trail:·,eol:¬
@@ -271,7 +271,6 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '?'
-let g:ale_javascript_eslint_use_global = 1
 
 " easy align conf
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -315,7 +314,6 @@ let g:indentguides_ignorelist = ['text', 'help']
 
 " git gutter config
 let g:gitgutter_max_signs = 500
-
 " Experimental stuff
 
 " open a session on startup
@@ -346,3 +344,4 @@ if has("autocmd")
 endif
 
 autocmd FileType javascript.jsx set omnifunc=csscomplete#CompleteCSS
+autocmd FileType stylus set omnifunc=csscomplete#CompleteCSS
