@@ -11,42 +11,24 @@ Plug 'pangloss/vim-javascript'
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'stanangeloff/php.vim'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'valloric/MatchTagAlways'
 Plug 'w0rp/ale'
-Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-session'
-Plug 'ap/vim-css-color'
 Plug 'FooSoft/vim-argwrap'
 Plug 'junegunn/vim-easy-align'
 Plug 'mxw/vim-jsx'
-Plug 'tpope/vim-dispatch'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'styled-components/vim-styled-components'
-Plug 'mikewest/vimroom'
 
 "fancy plugins
 Plug 'airblade/vim-gitgutter'
-Plug 'jungomi/vim-mdnquery'
 
 "color
-Plug 'tpope/vim-vividchalk'
-Plug 'shawncplus/skittles_berry'
-Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'rhysd/vim-color-spring-night'
-Plug 'jdkanani/vim-material-theme'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'andreypopp/vim-colors-plain'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'tomasiser/vim-code-dark'
 
 "initialize plugin system
 call plug#end()
@@ -81,7 +63,7 @@ set noswapfile
 set smartcase
 set infercase "completions are now case aware
 colorscheme onedark
-set colorcolumn=81
+set colorcolumn=101
 set clipboard=unnamedplus
 filetype plugin on
 filetype indent on
@@ -123,6 +105,9 @@ set modelines=1
 set wildmenu
 "ignore stuff in wildmenu
 set wildignore+=**/node_modules**,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+
+" hide tildas sucker
+hi NonText guifg=bg
 
 "mappings
 "dude, default leader is a pain in the ass

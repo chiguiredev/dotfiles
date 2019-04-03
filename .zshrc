@@ -62,7 +62,7 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git extract npm z colorize zsh-autosuggestions vi-mode shrink_path
+  git extract z colorize zsh-autosuggestions vi-mode yarn docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -76,9 +76,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -93,22 +93,22 @@ fi
 # For a full list of active aliases, run `alias`.
 # Example aliases
 
-# Getting into config files
-alias zconfig="vim ~/.zshrc"
-alias vconfig="vim ~/.vimrc"
-alias tconfig="vim ~/.tmux.conf"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias iconfig="vim ~/.i3/config"
-alias cconfig="vim ~/.config/compton.conf"
+alias vim="nvim"
+# Getting into config files like a pro
+alias zconfig="nvim ~/.zshrc"
+alias vconfig="nvim ~/.config/nvim/init.vim"
+alias tconfig="nvim ~/.tmux.conf"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias iconfig="nvim ~/.i3/config"
+alias cconfig="nvim ~/.config/compton.conf"
 
 # Every one that uses vim needs these ones
-alias cim="vim"
+alias cim="nvim"
 alias p="pwd"
-alias vi="vim"
 alias q="exit"
 alias :q="exit"
 alias c="clear"
-alias suvim="sudo -E vim"
+alias suvim="sudo -E nvim"
 
 # Trash-cli alias
 alias tp="trash-put"
@@ -138,24 +138,21 @@ alias tattach="tmux attach -t"
 alias tkill="tmux kill-session -t"
 alias tls="tmux ls"
 
-# Oracle db and docker
-alias oraclerun="docker run -d -p 49160:22 -p 49161:1521 -p 8080:8080 -e ORACLE_ENABLE_XDB=true wnameless/oracle-xe-11g"
-alias oracle_check="curl -XGET 'http://localhost:8080'"
-
 # Execute proxyman, I don't know why the hell the symbolic link does not work
 alias proxyman="cd /home/rafael/.proxyman && ./main.sh"
 
 # Easy hotspot setup
-alias create_hotspot="sudo create_ap wlp9s0f0 enp8s0 rafael 24780714"
-alias private_hotspot="sudo create_ap wlp9s0f0 enp8s0 lala 24780714"
+alias create_hotspot="sudo create_ap wlp9s0f0 enp8s0 rafael 24780714 --dhcp-dns 8.8.8.8"
+alias private_hotspot="sudo create_ap wlp9s0f0 enp8s0 lala 24780714 --dhcp-dns 8.8.8.8"
 alias clean_hotspot="sudo create_ap --fix-unmanaged"
 
 #sweet placing of  secndary display
-alias homeoffice="xrandr --output DP1 --auto --left-of eDP1"
+alias homeoffice="xrandr --output DP1 --auto --left-of eDP1 && xdotool key super+shift+r"
 
 alias pokemon="cd /opt/PROLinux && ./PRO.x86_64"
 alias alibaba="ip addr | grep inet"
 
+alias gta="git status"
 # This one is to manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotstatus='dotfiles status -uno'
@@ -176,8 +173,6 @@ alias noconfvim="vim -u NONE"
 
 alias update="sudo pacman -Syu"
 
-alias cat="bat"
-
 # Image carousel with feh
 alias img_carousel="feh -FZS"
 
@@ -186,6 +181,65 @@ alias word="wps"
 alias powerpoint="wpp"
 alias excel="et"
 
+alias open="mimeopen"
+alias open-set-default="mimeopen -d"
+alias open-with="mimeopen -a"
+
+# android setup bullshit
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
 fi
+
+export MTP_NO_PROBE="1"
+
+# z and fzf for the win
+# shamelessly taken from fzf github page, u sing z to print opened directories
+# and fzf to searh the list and cd into it
+unalias z 2> /dev/null
+z() {
+  [ $# -gt 0 ] && _z "$*" && return
+  cd "$(_z -l 2>&1 | fzf --nth 2.. --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+}
+
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f /home/rafael/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /home/rafael/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+
+# tm - create new tmux session, or switch to existing one. Works from within tmux too. (@bag-man)
+# `tm` will allow you to select your tmux session via fzf.
+# `tm irc` will attach to the irc session (if it exists), else it will create it.
+
+tm() {
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then
+    tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+}
+
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fe() {
+  local files
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+# Modified version where you can press
+#   - CTRL-O to open with `open` command,
+#   - CTRL-E or Enter key to open with the $EDITOR
+fo() {
+  local out file key
+  IFS=$'\n' out=($(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e))
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-nvim} "$file"
+  fi
+}

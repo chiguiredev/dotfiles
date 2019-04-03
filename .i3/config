@@ -22,12 +22,12 @@ mouse_warping none
 # remove ugly titlebars
 # fix graphics glitch
 new_window none
-for_window [class = "^.*"] border pixel 0
+for_window [class = "^.*"] border pixel 2
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-gaps inner 6
+gaps inner 4
 gaps outer 0
 smart_gaps on
 
@@ -35,7 +35,9 @@ smart_gaps on
 bindsym $mod+Return exec tilix
 
 # screenshots!!
-bindsym $mod+p exec gnome-screenshot -i
+bindsym $mod+p exec flameshot gui
+bindsym $mod+shift+p exec flameshot screen -c
+bindsym $mod+shift+ctrl+p exec flameshot full -c
 
 # launch categorized menu
 bindsym $mod+m exec --no-startup-id morc_menu
@@ -48,7 +50,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec rofi -show drun -show-icons
 # bindsym $mod+d exec --no-startup-id dmenu_recency
 
-bindsym $mod+x exec i3lock
+bindsym $mod+x exec blurlock
 
 # change focus
 # default keys altered to match those of vim
@@ -63,6 +65,9 @@ bindsym $mod+Control+h move left
 bindsym $mod+Control+j move down
 bindsym $mod+Control+k move up
 bindsym $mod+Control+l move right
+
+#sticky window
+bindsym $mod+y fullscreen disable; floating enable; resize set 400 300; sticky enable;
 
 # split in horiZontal orientation (Tall)
 bindsym $mod+u split h;exec notify-send 'tile horizontally'
@@ -156,7 +161,6 @@ bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to
 bindsym $mod+Shift+R restart
 
-bindsym $mod+Shift+l exec blurlock
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -259,15 +263,18 @@ exec --no-startup-id unclutter
 exec --no-startup-id volumeicon
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-fill /home/rafael/Pictures/wallpaper4.jpg
-# exec_always --no-startup-id compton --config /home/rafael/.config/compton.conf
+exec_always --no-startup-id compton --config /home/rafael/.config/compton.conf
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec --no-startup-id pamac-tray
-# exec --no-startup-id clipit
+exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id xfce4-power-manager
 # exec_always --no-startup-id fix_xcursor
+exec --no-startup-id kdeconnect-indicator
+exec --no-startip-id syncthing
 exec --no-startup-id firefox
 exec --no-startup-id tilix
 
