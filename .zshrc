@@ -1,7 +1,9 @@
 # want your terminal to support 256 color schemes? I do ...
 export TERM="xterm-256color"
 
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+export BROWSER="/usr/bin/firefox"
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
 # allows you to type Bash style comments on your command line

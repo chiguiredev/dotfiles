@@ -259,6 +259,7 @@ assign [class = "PRO.x86_64"] $ws6
 
 # auto start
 exec --no-startup-id setxkbmap -layout latam
+exec --no-startup-id pulseaudio
 exec --no-startup-id unclutter
 exec --no-startup-id volumeicon
 exec_always --no-startup-id nm-applet
