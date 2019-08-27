@@ -245,3 +245,5 @@ fo() {
     [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-nvim} "$file"
   fi
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
